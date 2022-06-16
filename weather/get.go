@@ -2,8 +2,14 @@ package weather
 
 import (
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
+)
+
+var (
+	BadAnswer    = errors.New("400 BadAnswer")    // 400 code :: Bad Request :: https://developer.mozilla.org/en/docs/Web/HTTP/Status/400
+	Unauthorized = errors.New("401 Unauthorized") // 401 code :: Unauthorized :: https://developer.mozilla.org/en/docs/Web/HTTP/Status/401
 )
 
 const link = "https://api.weatherapi.com/v1/current.json"
@@ -76,6 +82,12 @@ func GetWeather(apiKey string, location string) (weat Weather, err error) {
 	answer, err := client.Do(r)
 	if err != nil {
 		return
+	}
+	switch answer.StatusCode {
+	case 400: // Invalid location https://developer.mozilla.org/ru/docs/Web/HTTP/Status/401
+		return weat, BadAnswer
+	case 401: // Invalid api key
+		return weat, Unauthorized
 	}
 	weat = Weather{}
 	read, _ := io.ReadAll(answer.Body)
