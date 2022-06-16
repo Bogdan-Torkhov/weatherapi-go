@@ -12,7 +12,7 @@
 package main
 import (
 	"fmt"
-	weather "github.com/Bogdan-Torkhov/weatherapi-go"
+	"github.com/Bogdan-Torkhov/weatherapi-go/weather"
 )
 func main() {
 	const yourAPIkey = "apiKeyHere"
