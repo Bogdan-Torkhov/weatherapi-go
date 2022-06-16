@@ -11,7 +11,6 @@ const link = "https://api.weatherapi.com/v1/current.json"
 // Example output
 // {"location":{"name":"London","region":"City of London, Greater London","country":"United Kingdom","lat":51.52,"lon":-0.11,"tz_id":"Europe/London","localtime_epoch":1655375733,"localtime":"2022-06-16 11:35"},"current":{"last_updated_epoch":1655375400,"last_updated":"2022-06-16 11:30","temp_c":25.0,"temp_f":77.0,"is_day":1,"condition":{"text":"Sunny","icon":"//cdn.weatherapi.com/weather/64x64/day/113.png","code":1000},"wind_mph":6.9,"wind_kph":11.2,"wind_degree":240,"wind_dir":"WSW","pressure_mb":1022.0,"pressure_in":30.18,"precip_mm":0.0,"precip_in":0.0,"humidity":36,"cloud":0,"feelslike_c":25.4,"feelslike_f":77.8,"vis_km":10.0,"vis_miles":6.0,"uv":5.0,"gust_mph":4.7,"gust_kph":7.6}}
 
-
 type Weather struct {
 	Location Location `json:"location"`
 	Current  Current  `json:"current"`
